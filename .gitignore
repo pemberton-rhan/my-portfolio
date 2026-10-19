@@ -1,0 +1,5 @@
+# Reference material, not for publishing (includes licensed font files)
+inspo/
+
+# macOS
+.DS_Store
