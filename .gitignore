@@ -3,3 +3,7 @@ inspo/
 
 # macOS
 .DS_Store
+
+# raw captures and source video (compressed copies live in prototype/media/)
+/media/
+/screenshots/
