@@ -1,8 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import '../../styles/site.css';
 import Base from '../../layouts/Base.astro';
-import '../../styles/case-study.css';
 import Icon from '../../components/icons/Icon.astro';
 import CaseIntro from '../../components/case/CaseIntro.astro';
 import ScrollPlate from '../../components/case/ScrollPlate.astro';
@@ -70,3 +68,446 @@ const liveLabel = d.url?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
     import '../../scripts/case-study.js';
   </script>
 </Base>
+
+<style>
+  .cs-vid-f:after {
+    display: none;
+  }
+  .cs-plate .ph.cs-vid-f {
+    aspect-ratio: 16/9;
+    background: var(--proj-video, var(--proj));
+    overflow: hidden;
+  }
+  .cs-vid-f video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .cs-vid figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+  .cs-vid-btn {
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 4px 0;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+  .cs-vid-btn:hover,
+  .cs-vid-btn:focus-visible {
+    border-bottom-color: currentColor;
+    outline: none;
+  }
+  .cs-vid:not(.has-video) .cs-vid-btn {
+    visibility: hidden;
+  }
+  @media (max-width:760px) {
+    .cs-plate .ph.cs-vid-f {
+      aspect-ratio: 4/5;
+    }
+  }
+  .cs-lead {
+    grid-column: 2/span 12;
+    padding: var(--sec) var(--pad);
+  }
+  .cs-row {
+    grid-column: 2/span 12;
+    display: grid;
+    grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+    position: relative;
+  }
+  .cs-row:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: -100vw;
+    top: 0;
+    height: 1px;
+    background: var(--h);
+  }
+  .cs-ov {
+    overflow-x: clip;
+  }
+  .cs-brief {
+    padding: var(--sec) var(--pad);
+  }
+  .cs-brief h2 {
+    font-family: "Instrument Sans";
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: -.02em;
+    margin: 0;
+    max-width: 13em;
+  }
+  .cs-brief :global(p) {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--ink);
+    max-width: 34em;
+    margin: 28px 0 0;
+  }
+  .cs-brief :global(p + p) {
+    margin-top: 18px;
+    color: var(--ink-muted);
+  }
+  .cs-did {
+    padding: var(--sec) var(--pad);
+    background: var(--v) left top/1px 100% no-repeat;
+  }
+  .cs-did .lab {
+    margin: 0;
+    padding-top: 6px;
+  }
+  .cs-gal {
+    grid-column: 2/span 12;
+    padding: var(--sec) var(--pad);
+    display: grid;
+    gap: 56px;
+  }
+  .cs-gr {
+    display: grid;
+    grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+    column-gap: 32px;
+  }
+  .cs-gr--rev {
+    grid-template-columns: minmax(0,1fr) minmax(0,2fr);
+  }
+  .cs-gr--full {
+    grid-template-columns: 1fr;
+  }
+  .cs-gr--half {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  }
+  .cs-gr > :global(.cs-plate) {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .cs-gr:not(.cs-gr--full) {
+    grid-template-rows: auto;
+  }
+  .cs-out-in {
+    grid-column: 2/span 12;
+    display: grid;
+    grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+    gap: 48px;
+    padding: var(--sec) var(--pad);
+    align-items: start;
+  }
+  .cs-out-in p {
+    padding-top: 6px;
+    color: var(--ink-muted);
+  }
+  .cs-out-in h2 {
+    font-family: "Instrument Sans";
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: -.02em;
+    margin: 0;
+    max-width: 13em;
+  }
+  .cs-out-in p {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 28px;
+    margin: 0;
+    max-width: 26em;
+  }
+  .cs-out-in .xp-link :global(.ar--ext) {
+    width: 11px;
+    height: 11px;
+  }
+  .cs-next {
+    background: var(--ink-deep);
+    color: var(--paper);
+  }
+  .cs-next .rail {
+    background: var(--vp) right top/1px 100% no-repeat;
+  }
+  .cs-next .rail span {
+    color: rgba(242,237,229,.7);
+  }
+  .cs-next .lab {
+    color: rgba(242,237,229,.7);
+  }
+  .cs-next-a {
+    grid-column: 2/span 12;
+    display: grid;
+    grid-template-columns: auto auto minmax(0,1fr) minmax(0,26em);
+    align-items: center;
+    gap: 0 32px;
+    padding: var(--sec) var(--pad) 40px;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .cs-next-n {
+    font-size: 12px;
+    letter-spacing: .14em;
+    color: rgba(242,237,229,.7);
+    align-self: start;
+    padding-top: 4px;
+  }
+  .cs-next-thumb {
+    width: 112px;
+    aspect-ratio: 16/10;
+    background: rgba(242,237,229,.08);
+    box-shadow: inset 0 0 0 1px rgba(242,237,229,.2);
+  }
+  .cs-next-t {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cs-next-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    font-family: "Instrument Sans";
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: -.02em;
+  }
+  .cs-next-name i {
+    display: inline-flex;
+    transition: transform .2s;
+  }
+  .cs-next-name :global(.ar) {
+    width: 30px;
+    height: 20px;
+  }
+  .cs-next-a:hover .cs-next-name i,
+  .cs-next-a:focus-visible .cs-next-name i {
+    transform: translateX(6px);
+  }
+  .cs-next-a:hover .cs-next-name,
+  .cs-next-a:focus-visible .cs-next-name {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 8px;
+  }
+  .cs-next-d {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(242,237,229,.78);
+  }
+  .cs-all {
+    grid-column: 2/span 12;
+    padding: 0 var(--pad) var(--sec);
+  }
+  .cs-all .xp-link {
+    color: rgba(242,237,229,.85);
+    margin-top: 0;
+  }
+  .cs-all .xp-link:hover {
+    color: var(--paper);
+  }
+  .cs-all :global(.ar) {
+    width: 14px;
+    height: 10px;
+  }
+  .cs-next .rail {
+    grid-row: 1/span 2;
+  }
+  @media (max-width:1100px) {
+    .cs-row {
+      grid-template-columns: 1fr;
+    }
+    .cs-did {
+      background: var(--h) left top/100% 1px no-repeat;
+      padding-top: 40px;
+    }
+    .cs-out-in {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .cs-next-a {
+      grid-template-columns: auto minmax(0,1fr);
+      gap: 20px 24px;
+    }
+    .cs-next-thumb {
+      display: none;
+    }
+    .cs-next-d {
+      grid-column: 2;
+    }
+    .cs-gr {
+      column-gap: 24px;
+    }
+  }
+  @media (max-width:760px) {
+    .cs-lead,
+    .cs-row,
+    .cs-gal,
+    .cs-out-in,
+    .cs-next-a,
+    .cs-all {
+      grid-column: 1/-1;
+    }
+    .cs-lead {
+      padding: 32px 20px;
+    }
+    .cs-brief,
+    .cs-did {
+      padding: 40px 20px;
+    }
+    .cs-did {
+      padding-top: 32px;
+    }
+    .cs-brief h2,
+    .cs-out-in h2 {
+      font-size: 32px;
+      line-height: 38px;
+    }
+    .cs-brief :global(p) {
+      font-size: 16px;
+      line-height: 27px;
+    }
+    .cs-gal {
+      padding: 48px 20px;
+      gap: 40px;
+    }
+    .cs-gr,
+    .cs-gr--rev,
+    .cs-gr--half {
+      grid-template-columns: 1fr;
+      row-gap: 40px;
+    }
+    .cs-out-in {
+      padding: 48px 20px;
+    }
+    .cs-next-a {
+      padding: 48px 20px 32px;
+      grid-template-columns: 1fr;
+    }
+    .cs-next-n {
+      display: none;
+    }
+    .cs-next-d {
+      grid-column: 1;
+    }
+    .cs-next-name {
+      font-size: 32px;
+      line-height: 38px;
+      gap: 14px;
+    }
+    .cs-next-name :global(.ar) {
+      width: 22px;
+      height: 15px;
+    }
+    .cs-all {
+      padding: 0 20px 48px;
+    }
+  }
+  .cs-dark {
+    background: var(--proj-deep,var(--ink-deep));
+    color: var(--paper);
+  }
+  .cs-dark .rail {
+    background: var(--vp) right top/1px 100% no-repeat;
+  }
+  .cs-dark .rail span {
+    color: rgba(242,237,229,.7);
+  }
+  .cs-dark :global(figcaption) {
+    color: rgba(242,237,229,.72);
+  }
+  .cs-dark :global(figcaption b) {
+    color: var(--paper);
+  }
+  .cs-dark :global(.cs-plate .ph.has-img) {
+    background: transparent;
+  }
+  .cs-ov .rail {
+    grid-row: 1/span 3;
+  }
+  .cs-vid--side {
+    padding: var(--sec) var(--pad);
+    background: var(--v) left top/1px 100% no-repeat;
+  }
+  .cs-plate .ph.cs-vid-f.cs-vid-f {
+    aspect-ratio: 4/5;
+  }
+  .cs-did.strip {
+    grid-column: 2/span 12;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    position: relative;
+    padding: 0;
+    background: none;
+  }
+  .cs-did.strip:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: -100vw;
+    top: 0;
+    height: 1px;
+    background: var(--h);
+  }
+  .cs-did.strip>div {
+    padding: 22px var(--pad) 28px;
+  }
+  .cs-did.strip>div:not(:first-child) {
+    background: var(--v) left top/1px 100% no-repeat;
+  }
+  .cs-did.strip .lab {
+    margin: 0;
+    padding: 0;
+  }
+  .cs-did.strip .val {
+    margin: 8px 0 0;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--ink);
+  }
+  @media (max-width:1100px) {
+    .cs-vid--side {
+      background: none;
+      padding-top: 0;
+      max-width: 520px;
+    }
+    .cs-did.strip {
+      grid-template-columns: 1fr 1fr;
+    }
+    .cs-did.strip>div:nth-child(3) {
+      background: var(--h) left top/100% 1px no-repeat;
+    }
+    .cs-did.strip>div:nth-child(4) {
+      background: var(--h) left top/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat;
+    }
+  }
+  @media (max-width:760px) {
+    .cs-vid--side {
+      padding: 0 20px 40px;
+      max-width: none;
+    }
+    .cs-did.strip {
+      grid-column: 1/-1;
+      grid-template-columns: 1fr;
+    }
+    .cs-did.strip>div,
+    .cs-did.strip>div:nth-child(n) {
+      padding: 18px 20px 20px;
+      background: var(--h) left top/100% 1px no-repeat;
+    }
+    .cs-did.strip>div:first-child {
+      background: none;
+    }
+  }
+</style>

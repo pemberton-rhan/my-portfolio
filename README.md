@@ -29,11 +29,15 @@ src/
   content/work/*.md        one file per project: feeds the homepage list and the case studies
   data/                    site links, companies, skills, experience
   scripts/                 menu, palm, contact form, case study motion
-  styles/                  tokens.css, then one file per section in cascade order (see site.css);
-                           case-study.css is added on case study pages
+  styles/global.css        tokens, the reset and the pieces many components share; imported once,
+                           in the layout. Every other style lives in its component's scoped <style>.
 public/
   fonts/  logos/  media/<project>/
 ```
+
+Styles follow Astro's conventions: one global stylesheet plus scoped `<style>` blocks. A rule that styles
+something rendered by a child component (an `Icon`, say, or Markdown) wraps that part in `:global()`.
+Case studies theme the orange block by setting `--proj` on the page.
 
 The look follows the "Rhan Pemberton" design system: paper, slate navy and one terracotta,
 1px rules, Instrument Sans for headings, IBM Plex Mono and Plex Sans for everything else.

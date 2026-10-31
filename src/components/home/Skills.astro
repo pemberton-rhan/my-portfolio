@@ -9,3 +9,188 @@ const pad = (n: number) => String(n).padStart(2, '0');
   <article class:list={['sk-card', { 'sk-card--dark': s.dark, 'sk-brk': s.brk }]} style={`--o:${s.n}`}><header><span class="sk-n">{pad(s.n)}</span></header><h3>{s.title}</h3><ul>{s.items.map((it, i) => <Fragment>{i > 0 && ' '}<li>{it}</li></Fragment>)}</ul></article>
  ))}</div>
 </div></section>
+
+<style>
+  .sk {
+    background: var(--paper);
+  }
+  .sk-head {
+    grid-column: 2/span 12;
+    display: grid;
+    grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+    align-items: end;
+    padding: var(--sec) 0 56px;
+  }
+  .sk-head h2 {
+    font-family: "Instrument Sans";
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 50px;
+    letter-spacing: -.02em;
+    margin: 0;
+    padding: 0 var(--pad);
+  }
+  .sk-head p {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 28px;
+    color: var(--ink-muted);
+    margin: 0;
+    padding: 0 var(--pad);
+    max-width: 26em;
+  }
+  .sk-n {
+    font-size: 12px;
+    letter-spacing: .14em;
+    color: var(--rust);
+  }
+  @media (max-width:1100px) {
+    .sk-head {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding-bottom: 40px;
+    }
+  }
+  @media (max-width:760px) {
+    .sk-head {
+      grid-column: 1/-1;
+      padding: 56px 0 32px;
+    }
+    .sk-head h2,
+    .sk-head p {
+      padding: 0 20px;
+    }
+    .sk-head h2 {
+      font-size: 32px;
+      line-height: 38px;
+    }
+  }
+  .sk-head h2 {
+    max-width: none;
+  }
+  .sk-masonry {
+    grid-column: 2/span 12;
+    margin: 0 var(--pad) var(--sec);
+    column-count: 3;
+    column-gap: 24px;
+  }
+  .sk-card {
+    break-inside: avoid;
+    display: block;
+    margin: 0 0 24px;
+    padding: 24px 28px 18px;
+    position: relative;
+    background: var(--paper);
+  }
+  .sk-card:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--h) left top/100% 1px no-repeat,var(--h) left bottom/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat,var(--v) right top/1px 100% no-repeat;
+  }
+  .sk-card header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: .16em;
+    color: var(--ink-muted);
+  }
+  .sk-card .sk-n {
+    color: var(--rust);
+  }
+  .sk-card h3 {
+    font-family: "Instrument Sans";
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    letter-spacing: -.015em;
+    margin: 28px 0 16px;
+  }
+  .sk-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .sk-card li {
+    display: block;
+    margin: 0;
+    padding: 10px 0 9px;
+    background: var(--h) left top/100% 1px no-repeat;
+  }
+  .sk-card li:after {
+    content: none!important;
+  }
+  .sk-card--dark header,
+  .sk-card--dark .sk-n {
+    color: rgba(242,237,229,.7);
+  }
+  @media (max-width:1100px) {
+    .sk-masonry {
+      column-count: 2;
+    }
+  }
+  @media (max-width:760px) {
+    .sk-masonry {
+      grid-column: 1/-1;
+      margin: 0 20px 56px;
+      column-count: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .sk-card {
+      padding: 20px 20px 14px;
+      margin-bottom: 16px;
+      order: var(--o);
+    }
+    .sk-card h3 {
+      font-size: 22px;
+      line-height: 28px;
+      margin: 20px 0 12px;
+    }
+  }
+  @media (min-width:1101px) {
+    .sk-brk {
+      break-before: column;
+    }
+  }
+  @media (max-width:760px) {
+    .sk-card ul {
+      display: grid;
+      column-gap: 16px;
+      font-size: 13px;
+      line-height: 19px;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    }
+    .sk-card li {
+      white-space: normal;
+    }
+  }
+  .sk-card--dark {
+    background: #E8E1D6;
+    color: var(--ink);
+  }
+  .sk-card--dark:after {
+    background: var(--h) left top/100% 1px no-repeat,var(--h) left bottom/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat,var(--v) right top/1px 100% no-repeat;
+  }
+  .sk-card--dark header {
+    color: var(--ink-muted);
+  }
+  .sk-card--dark .sk-n {
+    color: var(--rust);
+  }
+  .sk-card--dark li {
+    background: var(--h) left top/100% 1px no-repeat;
+  }
+  @media (min-width:1101px) {
+    .sk-head {
+      align-items: last baseline;
+    }
+    .sk-head p {
+      margin: 0;
+    }
+  }
+</style>

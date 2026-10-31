@@ -11,3 +11,68 @@ const { number, title, intro, url, facts } = Astro.props;
   {url && <div class="btns"><a class="btn btn--solid" href={url} target="_blank" rel="noopener">Visit the live site <i><Icon name="external" /></i><span class="sr"> (opens in a new tab)</span></a></div>}</div></div>
  <div class="strip"><div><p class="lab">Role</p><p class="val">{facts.role}{facts.roleOrg && <small>{facts.roleOrg}</small>}</p></div><div><p class="lab">Team</p><p class="val">{facts.team}</p></div><div><p class="lab">Stack</p><p class="val">{facts.stack}</p></div><div><p class="lab">Launched</p><p class="val">{facts.launched}</p></div></div>
 </div></section>
+
+<style>
+  .cs-crumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cs-crumb a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+  }
+  .cs-crumb a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .25s ease;
+  }
+  .cs-crumb a:hover:after,
+  .cs-crumb a:focus-visible:after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .cs-crumb a i {
+    display: inline-flex;
+    transition: transform .2s;
+  }
+  .cs-crumb a:hover i {
+    transform: translateX(-4px);
+  }
+  .cs-crumb :global(.ar) {
+    width: 14px;
+    height: 10px;
+  }
+  .cs-hero .stmt h1 {
+    max-width: 12em;
+  }
+  .cs-hero .strip {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+  }
+  .cs-hero .btn i {
+    display: inline-flex;
+    margin-left: 10px;
+    vertical-align: -1px;
+  }
+  .cs-hero .btn :global(.ar--ext) {
+    width: 11px;
+    height: 11px;
+  }
+  @media (max-width:760px) {
+    .cs-hero .strip {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
