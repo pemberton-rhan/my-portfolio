@@ -17,7 +17,8 @@ npm run dev       # http://localhost:4321
 npm run build     # must pass before you commit
 ```
 
-Astro 7.4 needs Node 22.23.4 or newer. There is no test suite; verify changes by building and by
+Use Node 24 (`.nvmrc`). It matches the Vercel project setting and the runtime Vercel uses for the
+contact function; `engines` in `package.json` pins `24.x` so Vercel doesn't jump to a newer major. There is no test suite; verify changes by building and by
 looking at the pages (see Verifying below).
 
 ## Layout

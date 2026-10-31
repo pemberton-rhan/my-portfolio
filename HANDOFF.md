@@ -17,18 +17,19 @@ approved prototype. Nothing is deployed yet.
   the project's dark color, Outcome, Next project.
 - Contact endpoint `/api/contact` (Resend, Reply-To set to the visitor, hidden spam-trap field).
 - Styles: one `global.css` plus scoped component styles; prototype CSS cleaned up and halved.
+- Node pinned to 24 (`engines: 24.x`, `.nvmrc`) to match Vercel and stop the Node.js Version
+  Override warning.
 - Design system artifact updated with the case study components (CaseIntro, ScrollPlate, WhatIDid,
   PlateGallery, NextProject) and the project-color rules.
 
 ### Next up
 
-1. **Deploy.** Import the repo into Vercel (it detects Astro). Set `RESEND_API_KEY` and, if wanted,
+1. **Finish deploy setup.** The Vercel project `my-portfolio` builds from `master`. Set `RESEND_API_KEY` and, if wanted,
    `CONTACT_FROM`; verify the sending domain in Resend. Point pemberton.dev at the project.
 2. **Gordy Health case study.** Waiting on Rhan for a full-page capture from the Wayback Machine (see
    Gotchas for the console fix that makes the archived page render), his role, team, stack, year and
    3–4 things he did, plus brand colors. Then: crop plates into `public/media/gordy-health/` and add a
    `case` block to `src/content/work/gordy-health.md`, copying `giving-funds.md`.
-3. **Bump `engines.node`** in `package.json` to `>=22.23.4` (Astro 7.4.4 requires it).
 
 ### Waiting on Rhan
 
