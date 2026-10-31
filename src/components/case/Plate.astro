@@ -1,0 +1,5 @@
+---
+interface Props { n: number; src: string; width: number; height: number; alt: string; caption: string }
+const { n, src, width, height, alt, caption } = Astro.props;
+---
+<figure class="cs-plate cs-plate--desk fx"><div class="ph has-img" style={`aspect-ratio:${width}/${height}`}><img src={src} width={width} height={height} alt={alt} loading="lazy" decoding="async" /></div><figcaption><b>Plate {n}</b> {caption}</figcaption></figure>

@@ -1,0 +1,18 @@
+---
+import Icon from '../icons/Icon.astro';
+---
+<section class="ct ct--b" id="contact"><div class="max sheet">
+ <div class="rail"><span>Contact</span></div>
+ <div class="cb-head"><h2>Have a site that needs building, or a team that needs leading?</h2></div>
+ <form class="cb-form" id="ctForm" novalidate>
+  <p class="cb-sentence">Hi Rhan, I’m <span class="cb-blank"><label class="sr" for="cb-name">Your name</label><input id="cb-name" name="name" type="text" autocomplete="name" placeholder="your name" required /></span> from <span class="cb-blank"><label class="sr" for="cb-co">Company (optional)</label><input id="cb-co" name="company" type="text" autocomplete="organization" placeholder="your company" /></span>. I’m reaching out about <span class="cb-blank cb-sel"><label class="sr" for="cb-topic">What’s this about?</label><select id="cb-topic" name="topic" required><option value="" selected disabled>choose one</option><option value="new">a new website</option><option value="migration">a site migration</option><option value="support">ongoing support</option><option value="role">a full-time role</option><option value="other">something else</option></select></span>. You can reach me at <span class="cb-blank"><label class="sr" for="cb-email">Your email</label><input id="cb-email" name="email" type="email" autocomplete="email" placeholder="your email" required /></span>.</p>
+  <div class="cb-note" id="cb-note" hidden><label class="sr" for="cb-msg">Your note</label><textarea id="cb-msg" name="message" rows="3" placeholder="Anything else I should know?"></textarea></div>
+  <div class="cb-hp" aria-hidden="true"><label>Leave this empty <input name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
+  <div class="cb-actions"><button class="ct-btn" type="submit">Send message <i><Icon name="arrow" /></i></button><button class="cb-toggle" type="button" id="cb-addnote" aria-controls="cb-note" aria-expanded="false"><span class="cb-plus" aria-hidden="true"></span><span class="cb-tl">Add an additional note</span></button></div>
+  <p class="ct-status" id="ctStatus" role="status" aria-live="polite"></p>
+ </form>
+</div></section>
+
+<script>
+  import '../../scripts/contact.js';
+</script>

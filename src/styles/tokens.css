@@ -1,0 +1,63 @@
+/* Design tokens: the brand's colors, type, spacing and the sheet grid.
+   Source of truth: the "Rhan Pemberton" design system. */
+
+:root {
+  /* Color */
+  --paper: #f2ede5;          /* ground for everything */
+  --paper-tint: #ebe5db;     /* alternate sections */
+  --paper-deep: #e5ded3;     /* quiet fills, placeholders */
+  --rule: #d3cbc0;           /* opaque hairline for print */
+  --ink: #333f55;            /* text and headings */
+  --ink-muted: #5a5e66;      /* intros, captions, labels */
+  --ink-deep: #161b27;       /* text on orange, navy sections */
+  --signal: #d27a52;         /* the one orange */
+  --rust: #9a4a2a;           /* small orange text on paper */
+  --on-signal: var(--ink-deep);
+
+  /* 1px rules, drawn as gradients so they stay crisp at any zoom.
+     h = horizontal, v = vertical; d = on orange (ink-deep 45%), p = on navy (paper 20%) */
+  --h: linear-gradient(rgba(51, 63, 85, .26), rgba(51, 63, 85, .26));
+  --v: linear-gradient(rgba(51, 63, 85, .26), rgba(51, 63, 85, .26));
+  --hd: linear-gradient(rgba(22, 27, 39, .45), rgba(22, 27, 39, .45));
+  --vd: linear-gradient(rgba(22, 27, 39, .45), rgba(22, 27, 39, .45));
+  --hp: linear-gradient(rgba(242, 237, 229, .2), rgba(242, 237, 229, .2));
+  --vp: linear-gradient(rgba(242, 237, 229, .2), rgba(242, 237, 229, .2));
+
+  /* Type */
+  --font-display: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* The sheet: a side rail, then 12 columns */
+  --max: 1440px;   /* widest the grid gets */
+  --rail: 72px;    /* side rail with the rotated section titles */
+  --pad: 48px;     /* cell padding */
+  --sec: 96px;     /* section padding, top and bottom */
+}
+
+@media (max-width: 760px) {
+  :root {
+    --rail: 0px;
+    --pad: 20px;
+    --sec: 56px;
+  }
+}
+
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/IBMPlexMono-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/IBMPlexMono-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/IBMPlexMono-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/IBMPlexSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/IBMPlexSans-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("/fonts/InstrumentSans-Variable.woff2") format("woff2"); font-weight: 400 700; font-stretch: 75% 100%; font-style: normal; font-display: swap; }

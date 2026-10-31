@@ -1,0 +1,649 @@
+/* Case studies: project-colored intro, scroll plate, brief and video, what I did, screens, outcome, next project */
+/* project color: the header and intro take the project's color; text stays ink-deep (checked for 4.5:1) */
+.cs-page .hot,
+.cs-page .top.hot {
+  background: var(--proj,var(--signal));
+}
+
+/* screenshots and video sit without a frame */
+.cs-plate .ph.has-img:after,
+.cs-vid-f:after {
+  display: none;
+}
+.cs-plate .ph.cs-vid-f {
+  aspect-ratio: 16/9;
+  background: var(--proj-video, var(--proj));
+  overflow: hidden;
+}
+.cs-vid-f video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.cs-vid figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.cs-vid-btn {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.cs-vid-btn:hover,
+.cs-vid-btn:focus-visible {
+  border-bottom-color: currentColor;
+  outline: none;
+}
+.cs-vid:not(.has-video) .cs-vid-btn {
+  visibility: hidden;
+}
+@media (max-width:760px) {
+  .cs-plate .ph.cs-vid-f {
+    aspect-ratio: 4/5;
+  }
+}
+
+/* ---------- Case study ---------- */
+.ar--back {
+  transform: rotate(180deg);
+}
+.cs-crumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cs-crumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0;
+}
+.cs-crumb a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .25s ease;
+}
+.cs-crumb a:hover:after,
+.cs-crumb a:focus-visible:after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.cs-crumb a i {
+  display: inline-flex;
+  transition: transform .2s;
+}
+.cs-crumb a:hover i {
+  transform: translateX(-4px);
+}
+.cs-crumb .ar {
+  width: 14px;
+  height: 10px;
+}
+.cs-hero .stmt h1 {
+  max-width: 12em;
+}
+.cs-hero .strip {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+}
+.cs-hero .btn i {
+  display: inline-flex;
+  margin-left: 10px;
+  vertical-align: -1px;
+}
+.cs-hero .btn .ar--ext {
+  width: 11px;
+  height: 11px;
+}
+
+/* plates */
+.cs-plate {
+  margin: 0;
+}
+.cs-plate .ph {
+  aspect-ratio: 16/10;
+  width: 100%;
+  max-width: none;
+}
+.cs-plate .ph img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.cs-plate figcaption {
+  margin-top: 14px;
+  max-width: none;
+}
+
+/* overview */
+.cs-lead {
+  grid-column: 2/span 12;
+  padding: var(--sec) var(--pad);
+}
+.cs-row {
+  grid-column: 2/span 12;
+  display: grid;
+  grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+  position: relative;
+}
+.cs-row:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -100vw;
+  top: 0;
+  height: 1px;
+  background: var(--h);
+}
+.cs-ov {
+  overflow-x: clip;
+}
+.cs-brief {
+  padding: var(--sec) var(--pad);
+}
+.cs-brief h2 {
+  font-family: "Instrument Sans";
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 50px;
+  letter-spacing: -.02em;
+  margin: 0;
+  max-width: 13em;
+}
+.cs-brief p {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--ink);
+  max-width: 34em;
+  margin: 28px 0 0;
+}
+.cs-brief p+p {
+  margin-top: 18px;
+  color: var(--ink-muted);
+}
+.cs-did {
+  padding: var(--sec) var(--pad);
+  background: var(--v) left top/1px 100% no-repeat;
+}
+.cs-did .lab {
+  margin: 0;
+  padding-top: 6px;
+}
+
+/* screens */
+.cs-gal {
+  grid-column: 2/span 12;
+  padding: var(--sec) var(--pad);
+  display: grid;
+  gap: 56px;
+}
+.cs-gr {
+  display: grid;
+  grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+  column-gap: 32px;
+}
+.cs-gr--rev {
+  grid-template-columns: minmax(0,1fr) minmax(0,2fr);
+}
+.cs-gr--full {
+  grid-template-columns: 1fr;
+}
+.cs-gr--half {
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+}
+.cs-plate .ph.has-img {
+  background: var(--paper);
+}
+.cs-plate .ph.has-img img {
+  object-position: center;
+}
+.cs-gr>.cs-plate {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.cs-gr:not(.cs-gr--full) {
+  grid-template-rows: auto;
+}
+.cs-plate--mob .ph {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 0;
+}
+.cs-plate--mob .scr {
+  position: relative;
+  height: 84%;
+  aspect-ratio: 9/19.5;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  outline: 1px solid rgba(51,63,85,.26);
+  outline-offset: -1px;
+  overflow: hidden;
+}
+.cs-plate--mob .scr span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.cs-plate--mob .scr img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* outcome */
+.cs-out-in {
+  grid-column: 2/span 12;
+  display: grid;
+  grid-template-columns: minmax(0,7fr) minmax(0,5fr);
+  gap: 48px;
+  padding: var(--sec) var(--pad);
+  align-items: start;
+}
+.cs-out-in p {
+  padding-top: 6px;
+  color: var(--ink-muted);
+}
+.cs-out-in h2 {
+  font-family: "Instrument Sans";
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 50px;
+  letter-spacing: -.02em;
+  margin: 0;
+  max-width: 13em;
+}
+.cs-out-in p {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 28px;
+  margin: 0;
+  max-width: 26em;
+}
+.cs-out-in .xp-link .ar--ext {
+  width: 11px;
+  height: 11px;
+}
+
+/* next */
+.cs-next {
+  background: var(--ink-deep);
+  color: var(--paper);
+}
+.cs-next .rail {
+  background: var(--vp) right top/1px 100% no-repeat;
+}
+.cs-next .rail span {
+  color: rgba(242,237,229,.7);
+}
+.cs-next .lab {
+  color: rgba(242,237,229,.7);
+}
+.cs-next-a {
+  grid-column: 2/span 12;
+  display: grid;
+  grid-template-columns: auto auto minmax(0,1fr) minmax(0,26em);
+  align-items: center;
+  gap: 0 32px;
+  padding: var(--sec) var(--pad) 40px;
+  color: var(--paper);
+  text-decoration: none;
+}
+.cs-next-n {
+  font-size: 12px;
+  letter-spacing: .14em;
+  color: rgba(242,237,229,.7);
+  align-self: start;
+  padding-top: 4px;
+}
+.cs-next-thumb {
+  width: 112px;
+  aspect-ratio: 16/10;
+  background: rgba(242,237,229,.08);
+  box-shadow: inset 0 0 0 1px rgba(242,237,229,.2);
+}
+.cs-next-t {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cs-next-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Instrument Sans";
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 50px;
+  letter-spacing: -.02em;
+}
+.cs-next-name i {
+  display: inline-flex;
+  transition: transform .2s;
+}
+.cs-next-name .ar {
+  width: 30px;
+  height: 20px;
+}
+.cs-next-a:hover .cs-next-name i,
+.cs-next-a:focus-visible .cs-next-name i {
+  transform: translateX(6px);
+}
+.cs-next-a:hover .cs-next-name,
+.cs-next-a:focus-visible .cs-next-name {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 8px;
+}
+.cs-next-d {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(242,237,229,.78);
+}
+.cs-all {
+  grid-column: 2/span 12;
+  padding: 0 var(--pad) var(--sec);
+}
+.cs-all .xp-link {
+  color: rgba(242,237,229,.85);
+  margin-top: 0;
+}
+.cs-all .xp-link:hover {
+  color: var(--paper);
+}
+.cs-all .ar {
+  width: 14px;
+  height: 10px;
+}
+.cs-next .rail {
+  grid-row: 1/span 2;
+}
+@media (max-width:1100px) {
+  .cs-row {
+    grid-template-columns: 1fr;
+  }
+  .cs-did {
+    background: var(--h) left top/100% 1px no-repeat;
+    padding-top: 40px;
+  }
+  .cs-out-in {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cs-next-a {
+    grid-template-columns: auto minmax(0,1fr);
+    gap: 20px 24px;
+  }
+  .cs-next-thumb {
+    display: none;
+  }
+  .cs-next-d {
+    grid-column: 2;
+  }
+  .cs-gr {
+    column-gap: 24px;
+  }
+}
+@media (max-width:760px) {
+  .cs-hero .strip {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cs-lead,
+  .cs-row,
+  .cs-gal,
+  .cs-out-in,
+  .cs-next-a,
+  .cs-all {
+    grid-column: 1/-1;
+  }
+  .cs-lead {
+    padding: 32px 20px;
+  }
+  .cs-brief,
+  .cs-did {
+    padding: 40px 20px;
+  }
+  .cs-did {
+    padding-top: 32px;
+  }
+  .cs-brief h2,
+  .cs-out-in h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .cs-brief p {
+    font-size: 16px;
+    line-height: 27px;
+  }
+  .cs-gal {
+    padding: 48px 20px;
+    gap: 40px;
+  }
+  .cs-gr,
+  .cs-gr--rev,
+  .cs-gr--half {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+  .cs-plate--mob .ph {
+    aspect-ratio: 4/5;
+    height: auto;
+    width: 100%;
+  }
+  .cs-out-in {
+    padding: 48px 20px;
+  }
+  .cs-next-a {
+    padding: 48px 20px 32px;
+    grid-template-columns: 1fr;
+  }
+  .cs-next-n {
+    display: none;
+  }
+  .cs-next-d {
+    grid-column: 1;
+  }
+  .cs-next-name {
+    font-size: 32px;
+    line-height: 38px;
+    gap: 14px;
+  }
+  .cs-next-name .ar {
+    width: 22px;
+    height: 15px;
+  }
+  .cs-all {
+    padding: 0 20px 48px;
+  }
+}
+
+/* screens on the project's dark color */
+.cs-dark {
+  background: var(--proj-deep,var(--ink-deep));
+  color: var(--paper);
+}
+.cs-dark .rail {
+  background: var(--vp) right top/1px 100% no-repeat;
+}
+.cs-dark .rail span {
+  color: rgba(242,237,229,.7);
+}
+.cs-dark figcaption {
+  color: rgba(242,237,229,.72);
+}
+.cs-dark figcaption b {
+  color: var(--paper);
+}
+.cs-dark .cs-plate .ph.has-img {
+  background: transparent;
+}
+
+/* scrolling full-page plate */
+.cs-plate .ph.cs-scroll-f {
+  aspect-ratio: auto;
+  height: min(720px,72vh);
+  overflow: hidden;
+  background: #fff;
+  outline: none;
+}
+.cs-plate .ph.cs-scroll-f img {
+  inset: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  transform: translate3d(0,var(--y,0px),0);
+  transition: transform var(--dur,1.2s) cubic-bezier(.45,.05,.55,.95);
+  will-change: transform;
+}
+.cs-plate .ph.cs-scroll-f:focus-visible {
+  box-shadow: 0 0 0 2px var(--paper);
+}
+.cs-scroll figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cs-scroll-hint {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cs-scroll.is-manual .cs-scroll-f {
+  overflow-y: auto;
+}
+.cs-scroll.is-manual .cs-scroll-f img {
+  position: static;
+  transform: none;
+  transition: none;
+}
+@media (max-width:760px) {
+  .cs-plate .ph.cs-scroll-f {
+    height: min(560px,70vh);
+  }
+  .cs-scroll figcaption {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* fade up */
+.fx-on .fx {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease var(--d,0s),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0s);
+}
+.fx-on .fx.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* overview: brief beside the video, what I did as a strip below */
+.cs-ov .rail {
+  grid-row: 1/span 3;
+}
+.cs-vid--side {
+  padding: var(--sec) var(--pad);
+  background: var(--v) left top/1px 100% no-repeat;
+}
+.cs-plate .ph.cs-vid-f.cs-vid-f {
+  aspect-ratio: 4/5;
+}
+.cs-did.strip {
+  grid-column: 2/span 12;
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  position: relative;
+  padding: 0;
+  background: none;
+}
+.cs-did.strip:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -100vw;
+  top: 0;
+  height: 1px;
+  background: var(--h);
+}
+.cs-did.strip>div {
+  padding: 22px var(--pad) 28px;
+}
+.cs-did.strip>div+div {
+  background: var(--v) left top/1px 100% no-repeat;
+}
+.cs-did.strip .lab {
+  margin: 0;
+  padding: 0;
+}
+.cs-did.strip .val {
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink);
+}
+@media (max-width:1100px) {
+  .cs-vid--side {
+    background: none;
+    padding-top: 0;
+    max-width: 520px;
+  }
+  .cs-did.strip {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cs-did.strip>div:nth-child(3) {
+    background: var(--h) left top/100% 1px no-repeat;
+  }
+  .cs-did.strip>div:nth-child(4) {
+    background: var(--h) left top/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat;
+  }
+}
+@media (max-width:760px) {
+  .cs-vid--side {
+    padding: 0 20px 40px;
+    max-width: none;
+  }
+  .cs-did.strip {
+    grid-column: 1/-1;
+    grid-template-columns: 1fr;
+  }
+  .cs-did.strip>div,
+  .cs-did.strip>div:nth-child(n) {
+    padding: 18px 20px 20px;
+    background: var(--h) left top/100% 1px no-repeat;
+  }
+  .cs-did.strip>div:first-child {
+    background: none;
+  }
+}

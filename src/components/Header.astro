@@ -1,0 +1,24 @@
+---
+import Sprout from './icons/Sprout.astro';
+import Wordmark from './icons/Wordmark.astro';
+import Icon from './icons/Icon.astro';
+import { site } from '../data/site';
+
+interface Props { home?: boolean; current?: 'work' }
+const { home = false, current } = Astro.props;
+const to = (id: string) => (home ? `#${id}` : `/#${id}`);
+const links = [
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Work' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact', label: 'Contact' },
+];
+---
+<header class="top hot" id="top"><div class="max"><div class="rail"><span></span></div><a class="mark" href={home ? '#' : '/'} aria-label="Rhan Pemberton, home"><Sprout /><Wordmark /></a>
+<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><div class="navwrap" id="mainnav"><nav class="nav" aria-label="Main">{links.map((l) => <a href={to(l.id)} aria-current={current === l.id ? 'page' : undefined}>{l.label}</a>)}<a class="nav-dl" href={site.resume}>Resume <i><Icon name="download" /></i></a></nav></div></div></header>
+
+<script>
+  import '../scripts/menu.js';
+  import '../scripts/palm.js';
+</script>

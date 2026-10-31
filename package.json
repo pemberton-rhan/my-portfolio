@@ -1,0 +1,20 @@
+{
+  "name": "pemberton-dev",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^11.0.17",
+    "astro": "~7.3.8",
+    "resend": "^6.37.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "description": "pemberton.dev: Rhan Pemberton’s portfolio"
+}

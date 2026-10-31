@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import Icon from '../icons/Icon.astro';
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+<section class="pf tint" id="work"><div class="max sheet">
+ <div class="rail"><span>Selected work</span></div>
+ <div class="pf-head"><h2>Work that’s still running, years after launch.</h2><p>A few projects from GoFundMe, agencies and the clients I’ve built for. Each one links to a short case study.</p></div>
+ <div class="pf-index"><ol class="pf-list">{work.map((p) => (
+  <li><a href={p.data.case ? `/work/${p.id}/` : '#'}><span class="pf-n">{pad(p.data.order)}</span><span class="pf-thumb" aria-hidden="true">{p.data.thumb && <img src={p.data.thumb} alt="" loading="lazy" />}</span><span class="pf-t">{p.data.title}</span><span class="pf-ind">{p.data.industry}</span><i><Icon name="arrow" /></i></a></li>
+ ))}</ol></div>
+</div></section>

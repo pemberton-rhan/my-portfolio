@@ -1,0 +1,14 @@
+---
+import Icon from '../icons/Icon.astro';
+import { roles, earlier } from '../../data/experience';
+import { site } from '../../data/site';
+---
+<section class="xp" id="experience"><div class="max sheet">
+ <div class="rail"><span>Experience</span></div>
+ <div class="xp-head"><h2>Twelve years of building, then leading.</h2><div class="xp-cta"><p>From junior engineer to managing a WordPress team, mostly in legal marketing and at GoFundMe.</p></div></div>
+ <div class="xp-dl"><a class="xp-link" href={site.resume}>Download resume <i><Icon name="download" /></i></a></div>
+ <div class="xp-list">{roles.map((r) => (
+  <article class="xp-row"><div class="xp-year"><div class="xp-yr"><p class="xp-y">{r.year}{r.until && <span>–{r.until}</span>}</p><p class="xp-d">{r.dates}</p></div></div><div class="xp-body"><h3>{r.company}</h3><ol class:list={['xp-titles', { 'is-ladder': r.titles.length > 1 }]}>{r.titles.map((t, i) => <li class={i === 0 ? 'is-now' : undefined}>{t}</li>)}</ol><ul class="xp-notes">{r.notes.map((n) => <li>{n}</li>)}</ul></div></article>
+ ))}</div>
+ <div class="xp-earlier"><p class="lab">Earlier</p><ul>{earlier.map((e) => <li><p class="xp-et">{e.title}</p><p class="xp-ec">{e.company}<span>{e.place}</span></p></li>)}</ul></div>
+</div></section>

@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import '../../styles/site.css';
+import Base from '../../layouts/Base.astro';
+import '../../styles/case-study.css';
+import Icon from '../../components/icons/Icon.astro';
+import CaseIntro from '../../components/case/CaseIntro.astro';
+import ScrollPlate from '../../components/case/ScrollPlate.astro';
+import Plate from '../../components/case/Plate.astro';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return all.filter((p) => p.data.case).map((p) => {
+    const i = all.indexOf(p);
+    return { params: { slug: p.id }, props: { project: p, next: all[(i + 1) % all.length] } };
+  });
+}
+
+const { project, next } = Astro.props;
+const d = project.data;
+const c = d.case!;
+const { Content } = await render(project);
+const pad = (n: number) => String(n).padStart(2, '0');
+const theme = `--proj:${c.colors.light};--proj-deep:${c.colors.deep}` + (c.colors.videoMat ? `;--proj-video:${c.colors.videoMat}` : '');
+// Plates are numbered in reading order: 1 is the full page, then the video, then the screens.
+let n = c.video ? 2 : 1;
+const rows = c.plates.map((row) => row.map((p) => ({ ...p, n: ++n })));
+const nextHref = next.data.case ? `/work/${next.id}/` : '/#work';
+const liveLabel = d.url?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+---
+<Base title={`${d.title} — Rhan Pemberton`} description={c.intro} current="work" bodyClass="cs-page" bodyStyle={theme}>
+  <script is:inline slot="head">if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx-on')</script>
+  <CaseIntro number={pad(d.order)} title={d.title} intro={c.intro} url={d.url} facts={c.facts} />
+
+  <section class="cs-ov" id="overview"><div class="max sheet">
+   <div class="rail"><span>Overview</span></div>
+   <div class="cs-lead"><ScrollPlate image={c.fullPage} /></div>
+   <div class="cs-row">
+    <div class="cs-brief"><h2>{c.heading}</h2>
+     <Content /></div>
+    {c.video && (
+     <figure class="cs-plate cs-vid cs-vid--side fx"><div class="ph cs-vid-f"><video src={c.video.src} poster={c.video.poster} muted loop playsinline preload="metadata" aria-label={c.video.label}></video></div>
+      <figcaption><span><b>Plate 2</b> {c.video.caption}</span><button class="cs-vid-btn" type="button" aria-pressed="false">Pause</button></figcaption></figure>
+    )}
+   </div>
+   <div class="cs-did strip">{c.did.map((x) => <div><p class="lab">{x.label}</p><p class="val">{x.text}</p></div>)}</div>
+  </div></section>
+
+  <section class="cs-screens cs-dark" id="screens"><div class="max sheet">
+   <div class="rail"><span>Screens</span></div>
+   <div class="cs-gal">
+    {rows.map((row) => <div class:list={['cs-gr', row.length > 1 ? 'cs-gr--half' : 'cs-gr--full']}>{row.map((p) => <Plate {...p} />)}</div>)}
+   </div>
+  </div></section>
+
+  <section class="cs-out" id="outcome"><div class="max sheet">
+   <div class="rail"><span>Outcome</span></div>
+   <div class="cs-out-in"><h2>{c.outcome.heading}</h2>
+    <div><p>{c.outcome.text}</p>
+    {d.url && <a class="xp-link" href={d.url} target="_blank" rel="noopener">{liveLabel} <i><Icon name="external" /></i><span class="sr"> (opens in a new tab)</span></a>}</div></div>
+  </div></section>
+
+  <section class="cs-next" id="next"><div class="max sheet">
+   <div class="rail"><span>Next</span></div>
+   <a class="cs-next-a" href={nextHref}><span class="cs-next-n">{pad(next.data.order)}</span><span class="cs-next-thumb" aria-hidden="true">{next.data.thumb && <img src={next.data.thumb} alt="" loading="lazy" />}</span><span class="cs-next-t"><span class="lab">Next project</span><span class="cs-next-name">{next.data.title} <i><Icon name="arrow" /></i></span></span><span class="cs-next-d">{next.data.summary}</span></a>
+   <div class="cs-all"><a class="xp-link" href="/#work"><i><Icon name="back" /></i> All work</a></div>
+  </div></section>
+
+  <script>
+    import '../../scripts/case-study.js';
+  </script>
+</Base>

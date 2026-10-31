@@ -1,0 +1,24 @@
+---
+import { companies } from '../../data/companies';
+const facts = [
+  { label: 'Served', value: 'Hospital Corpsman', note: 'US Navy' },
+  { label: 'Trained', value: 'Graphic and web design', note: 'Platt College, San Diego, CA' },
+  { label: 'Built', value: 'WordPress since 2013', note: 'iLawyer, LawRank, GoFundMe' },
+  { label: 'Leader', value: 'Mentoring and code review', note: 'GoFundMe, Elite Legal Marketing' },
+];
+// The tape holds the logos twice so the loop is seamless; the copy is hidden from screen readers.
+const tape = [...companies.map((c) => ({ ...c, copy: false })), ...companies.map((c) => ({ ...c, copy: true }))];
+---
+<section class="about about--rev" id="about"><div class="max sheet">
+ <div class="rail"><span>About</span></div>
+ <div class="bio">
+  <h2>A designer’s eye, an engineer’s habits, a lead’s patience.</h2>
+  <p class="prose">I came to the web through design. After serving as a hospital corpsman in the US Navy, I worked as a graphic and web designer before moving into WordPress engineering full time in 2013.</p>
+  <p class="prose">Since then I’ve built and run sites for law firms, agencies and GoFundMe, and spent the last several years leading the engineers who build them: setting standards, reviewing code, and turning good habits into process that a whole team can follow.</p>
+ </div>
+ <div class="facts">
+  <div class="path">
+   {facts.map((f) => <div><p class="lab">{f.label}</p><p class="val">{f.value}<small>{f.note}</small></p></div>)}
+  </div></div>
+ <div class="rail rail--logos"><span>Companies</span></div><div class="logos"><p class="lab">Companies</p><div class="ticker"><ul class="tape">{tape.map((c) => <li aria-hidden={c.copy ? 'true' : undefined}><img src={`/logos/${c.file}`} alt={c.copy ? '' : c.name} style={`--h:${c.height}px`} loading="lazy" /></li>)}</ul></div></div>
+</div></section>

@@ -1,0 +1,13 @@
+---
+import Icon from '../icons/Icon.astro';
+interface Props { number: string; title: string; intro: string; url?: string; facts: { role: string; roleOrg?: string; team: string; stack: string; launched: string } }
+const { number, title, intro, url, facts } = Astro.props;
+---
+<section class="hot cs-hero"><div class="max sheet">
+ <div class="rail"><span>Case study</span></div>
+ <div class="stmt"><p class="lab cs-crumb"><a href="/#work"><i><Icon name="back" /></i>Selected work</a><span aria-hidden="true">/</span><span>{number}</span></p>
+  <h1>{title}</h1>
+  <div class="stmt__foot"><p class="lede">{intro}</p>
+  {url && <div class="btns"><a class="btn btn--solid" href={url} target="_blank" rel="noopener">Visit the live site <i><Icon name="external" /></i><span class="sr"> (opens in a new tab)</span></a></div>}</div></div>
+ <div class="strip"><div><p class="lab">Role</p><p class="val">{facts.role}{facts.roleOrg && <small>{facts.roleOrg}</small>}</p></div><div><p class="lab">Team</p><p class="val">{facts.team}</p></div><div><p class="lab">Stack</p><p class="val">{facts.stack}</p></div><div><p class="lab">Launched</p><p class="val">{facts.launched}</p></div></div>
+</div></section>

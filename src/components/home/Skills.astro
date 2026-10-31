@@ -1,0 +1,11 @@
+---
+import { skills } from '../../data/skills';
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+<section class="sk" id="skills"><div class="max sheet">
+ <div class="rail"><span>Skills</span></div>
+ <div class="sk-head"><h2>The tools change.<br />The habits don’t.</h2><p>Twelve years of WordPress and front-end work, plus the process that keeps a team shipping clean code.</p></div>
+ <div class="sk-masonry">{skills.map((s) => (
+  <article class:list={['sk-card', { 'sk-card--dark': s.dark, 'sk-brk': s.brk }]} style={`--o:${s.n}`}><header><span class="sk-n">{pad(s.n)}</span></header><h3>{s.title}</h3><ul>{s.items.map((it, i) => <Fragment>{i > 0 && ' '}<li>{it}</li></Fragment>)}</ul></article>
+ ))}</div>
+</div></section>

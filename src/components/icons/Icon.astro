@@ -1,0 +1,13 @@
+---
+// Drawn line icons: 1.4px strokes, square caps. Never use the → ↗ ↓ ↑ characters instead.
+interface Props { name: 'arrow' | 'back' | 'up' | 'external' | 'download' }
+const { name } = Astro.props;
+const common = { fill: 'none', stroke: 'currentColor', 'stroke-width': '1.4', 'stroke-linecap': 'square', 'aria-hidden': 'true', focusable: 'false' };
+---
+{name === 'external' ? (
+  <svg class="ar ar--ext" viewBox="0 0 12 12" {...common}><path d="M2 10L10 2M4 2h6v6" /></svg>
+) : name === 'download' ? (
+  <svg class="ar ar--dl" viewBox="0 0 14 14" {...common}><path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M1 13h12" /></svg>
+) : (
+  <svg class:list={['ar', { 'ar--back': name === 'back', 'ar--up': name === 'up' }]} viewBox="0 0 18 12" {...common}><path d="M1 6h15M11 1l5 5-5 5" /></svg>
+)}

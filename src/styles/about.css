@@ -1,0 +1,207 @@
+/* About: bio and the facts list */
+.about {
+  background: var(--paper);
+  overflow-x: clip;
+}
+.bio {
+  grid-column: 7/span 7;
+  padding: var(--sec) var(--pad) var(--sec);
+  background: var(--v) left top/1px 100% no-repeat;
+}
+.bio h2 {
+  font-family: "Instrument Sans";
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 50px;
+  letter-spacing: -.02em;
+  margin: 18px 0 0;
+  max-width: 13em;
+}
+.bio .prose {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--ink);
+  max-width: 34em;
+  margin-top: 28px;
+}
+.bio .prose+.prose {
+  margin-top: 18px;
+  color: var(--ink-muted);
+}
+.path {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 48px;
+  background: var(--h) left top/100% 1px no-repeat;
+}
+.path div {
+  padding: 18px 24px 20px 0;
+  background: var(--h) left bottom/100% 1px no-repeat;
+}
+.path div:nth-child(even) {
+  padding-left: 24px;
+  background: var(--h) left bottom/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat;
+}
+.path .val {
+  font-size: 15px;
+  line-height: 22px;
+  margin-top: 8px;
+}
+.path .val small {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 13px;
+  line-height: 20px;
+}
+@media (max-width:1100px) {
+  .bio {
+    grid-column: 2/span 12;
+    background: none;
+  }
+}
+@media (max-width:760px) {
+  .bio {
+    grid-column: 1/-1;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+  }
+  .bio h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .bio .prose {
+    font-size: 16px;
+    line-height: 27px;
+  }
+  .path {
+    grid-template-columns: 1fr;
+  }
+  .path div:nth-child(even) {
+    padding-left: 0;
+    background: var(--h) left bottom/100% 1px no-repeat;
+  }
+}
+.about .rail {
+  grid-row: 1/span 2;
+}
+@media (max-width:1100px) {
+  .about .rail {
+    grid-row: 1/span 3;
+  }
+}
+.bio h2 {
+  margin-top: 0;
+}
+.about .rail:not(.rail--logos) {
+  grid-row: 1;
+}
+.about .rail--logos {
+  grid-row: 2;
+  grid-column: 1;
+}
+.about .rail--logos span {
+  position: static;
+  margin: 56px 0 56px 14px;
+}
+@media (max-width:1100px) {
+  .about .rail:not(.rail--logos) {
+    grid-row: 1/span 2;
+  }
+  .about .rail--logos {
+    grid-row: 3;
+  }
+}
+@media (max-width:760px) {
+  .path {
+    background: none;
+  }
+  .path div:last-child {
+    background: none;
+  }
+}
+@media (min-width:1101px) {
+  .about--rev .bio {
+    grid-column: 2/span 7;
+    grid-row: 1;
+    background: none;
+  }
+}
+.about .facts {
+  grid-column: 9/span 5;
+  grid-row: 1;
+  padding: var(--sec) var(--pad);
+  background: var(--v) left top/1px 100% no-repeat;
+}
+.about .facts .path {
+  grid-template-columns: 1fr;
+  margin-top: 0;
+  background: none;
+}
+.about .facts .path div,
+.about .facts .path div:nth-child(even) {
+  padding: 22px 0 24px;
+  background: var(--h) left bottom/100% 1px no-repeat;
+}
+.about .facts .path div:first-child {
+  padding-top: 6px;
+}
+.about .facts .path div:last-child {
+  background: none;
+  padding-bottom: 0;
+}
+@media (max-width:1100px) {
+  .about--rev .bio {
+    grid-column: 2/span 12;
+    padding-bottom: 0;
+  }
+  .about .facts {
+    grid-column: 2/span 12;
+    grid-row: 2;
+    padding-top: 48px;
+    background: none;
+  }
+  .about .facts .path {
+    grid-template-columns: 1fr 1fr;
+    background: var(--h) left top/100% 1px no-repeat;
+  }
+  .about .facts .path div,
+  .about .facts .path div:first-child {
+    padding: 18px 24px 20px 0;
+    background: var(--h) left bottom/100% 1px no-repeat;
+  }
+  .about .facts .path div:nth-child(even) {
+    padding: 18px 0 20px 24px;
+    background: var(--h) left bottom/100% 1px no-repeat,var(--v) left top/1px 100% no-repeat;
+  }
+  .about .facts .path div:last-child {
+    padding-bottom: 20px;
+  }
+}
+@media (max-width:760px) {
+  .about--rev .bio {
+    grid-column: 1/-1;
+  }
+  .about .facts {
+    grid-column: 1/-1;
+    padding: 32px 20px 48px;
+  }
+  .about .facts .path {
+    grid-template-columns: 1fr;
+    background: none;
+  }
+  .about .facts .path div,
+  .about .facts .path div:first-child,
+  .about .facts .path div:nth-child(even) {
+    padding: 16px 0 18px;
+    background: var(--h) left bottom/100% 1px no-repeat;
+  }
+  .about .facts .path div:first-child {
+    padding-top: 0;
+  }
+  .about .facts .path div:last-child {
+    background: none;
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,9 @@
+---
+import Icon from './icons/Icon.astro';
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="ft"><div class="max ft-in">
+ <p class="ft-copy">© {year} {site.name}<span>{site.location}</span></p>
+ <nav class="ft-links" aria-label="Footer"><a href={`mailto:${site.email}`}>Email</a><a href={site.linkedin} target="_blank" rel="noopener">LinkedIn <i><Icon name="external" /></i><span class="sr"> (opens in a new tab)</span></a><a href={site.resume}>Resume</a><a href="#top">Back to top <i><Icon name="up" /></i></a></nav>
+</div></footer>

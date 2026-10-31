@@ -1,0 +1,7 @@
+---
+// Plate 1: the project's full page in a frame that scrolls itself (see scripts/case-study.js).
+interface Props { image: { src: string; width: number; height: number; alt: string } }
+const { image } = Astro.props;
+---
+<figure class="cs-plate cs-scroll fx"><div class="ph has-img cs-scroll-f" tabindex="0" role="img" aria-label={image.alt}><img src={image.src} width={image.width} height={image.height} alt="" loading="lazy" decoding="async" /></div>
+   <figcaption><span><b>Plate 1</b> The full landing page, top to bottom.</span><span class="cs-scroll-hint">Hover to scroll</span></figcaption></figure>
