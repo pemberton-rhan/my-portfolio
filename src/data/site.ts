@@ -4,7 +4,7 @@ export const site = {
   url: 'https://pemberton.dev',
   email: 'rhan@pemberton.dev',
   linkedin: 'https://www.linkedin.com/in/rhan-pemberton/',
-  resume: '#', // TODO: link the resume PDF once it exists (it carries the phone number; the site never does)
+  resume: '/rhan-pemberton-resume.pdf', // carries the phone number; the site itself never does
   location: 'Nashville, TN',
   description: 'Web developer and technical lead. I build fast, durable websites and lead the teams that keep them that way.',
 };
