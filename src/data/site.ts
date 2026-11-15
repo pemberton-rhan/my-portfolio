@@ -6,5 +6,5 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/rhan-pemberton/',
   resume: '/rhan-pemberton-resume.pdf', // carries the phone number; the site itself never does
   location: 'Nashville, TN',
-  description: 'Web developer and technical lead. I build fast, durable websites and lead the teams that keep them that way.',
+  description: 'Full stack developer and technical lead. I build fast, durable websites and lead the teams that keep them that way.',
 };

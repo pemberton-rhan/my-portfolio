@@ -4,7 +4,7 @@ export const roles = [
     company: 'Elite Legal Marketing', year: '2025', until: 'Now', dates: 'Dec 2025 – Present',
     titles: ['Lead WordPress Developer'],
     notes: [
-      'Lead a team of eight developers and set the technical direction for client projects.',
+      'Lead a team of five developers and set the technical direction for client projects.',
       'Manage the migration of more than 100 legal websites from Cloudways to WP Engine.',
       'Set theme and coding standards, run code reviews, and train the team on Git, local development and SEO.',
       'Work directly with clients to gather requirements and shape solutions around them.',
