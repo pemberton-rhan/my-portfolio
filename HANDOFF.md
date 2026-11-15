@@ -1,7 +1,7 @@
 # Handoff
 
 Where pemberton.dev stands, what's been decided, and what's next. Update this file at the end of
-every working session. Last updated: 2026-10-31.
+every working session. Last updated: 2026-11-15.
 
 ## Status
 
@@ -19,6 +19,10 @@ approved prototype. Nothing is deployed yet.
 - Styles: one `global.css` plus scoped component styles; prototype CSS cleaned up and halved.
 - Node pinned to 24 (`engines: 24.x`, `.nvmrc`) to match Vercel and stop the Node.js Version
   Override warning.
+- Resume: a two-page PDF in the design system (paper ground, orange header, name set in Instrument Sans; no wordmark or sprout) at
+  `public/rhan-pemberton-resume.pdf`; `resume` in `src/data/site.ts` points the four Download resume
+  links at it. Built from HTML with Playwright; the build script lives in the project files
+  (`resume/build.js`), not in this repo. It carries the phone number; the site never does.
 - Design system artifact updated with the case study components (CaseIntro, ScrollPlate, WhatIDid,
   PlateGallery, NextProject) and the project-color rules.
 
@@ -33,19 +37,16 @@ approved prototype. Nothing is deployed yet.
 
 ### Waiting on Rhan
 
-- Resume PDF. Then set `resume` in `src/data/site.ts` (it's `#` everywhere for now). The phone number
-  goes on the resume, never on the site.
 - Confirm the Giving Funds "What I did" points, Team and Stack. They were drafted from his GoFundMe
   experience, not from him. The product facts (June 2025 launch, no fees, $5 minimum, 1.4M charities)
   come from GoFundMe's announcement and live page.
 - The Giving Funds video file is dated Dec 2025, after he left GoFundMe in Jul 2025. He should confirm
   he's comfortable showing that version.
-- Real AI skills (the AI card in Skills holds placeholders).
+- Real AI skills (the AI card in Skills holds placeholders; the resume leaves AI out until then).
 - Materials for the other eight case studies, and thumbnails for the homepage rows (`thumb`).
 
 ### Later
 
-- Build the resume (after the site is done), in the same design system.
 - Refresh the business card in `brand/business-card/`: it still uses the old orange `#C96A40` and
   Lennon text; use `#D27A52` and the outlined wordmark.
 - Delete `prototype/` once nobody needs it for reference.
